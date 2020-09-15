@@ -266,19 +266,19 @@ int main(void)
   SegmentLCD_Write("potat");
 
   float vx, vy, vz;
-  float treshold = 0;
+  float treshold = 330;
   HIDKBD_KeyReport_t report;
   /* Infinite loop with test pattern. */
   while (1) {
 	  vx = readCoordinate(adcSingleInpCh0, COMP_X);
 	  vy = readCoordinate(adcSingleInpCh1, COMP_Y);
 	  vz = readCoordinate(adcSingleInpCh2, COMP_Z);
-	  if (vx > 330) vx = 330;
-	  else if(vx < -330) vx = -330;
-	  if(vy > 330) vy = 330;
-	  else if(vy < -330) vy = -330;
-	  if(vz > 330) vz = 330;
-	  else if(vz < -330) vz = -330;
+	  if (vx > treshold) vx = treshold;
+	  else if(vx < -treshold) vx = -treshold;
+	  if(vy > treshold) vy = treshold;
+	  else if(vy < -treshold) vy = -treshold;
+	  if(vz > treshold) vz = treshold;
+	  else if(vz < -treshold) vz = -treshold;
 
 	  report.X = -vx * 127 / 330;
 
